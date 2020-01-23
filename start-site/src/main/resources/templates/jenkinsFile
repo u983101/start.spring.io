@@ -1,0 +1,47 @@
+#!groovy
+
+node {
+    try {
+        env.JAVA_HOME="${tool 'openjdk-11'}"
+        env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+        sh 'java -version'
+
+        timeout(time:10, unit:'MINUTES') {
+            stage('Checkout') {
+
+                // Clean workspace before doing anything
+                deleteDir()
+
+                checkout scm
+            }
+            stage('Initialise') {
+                try {
+                    sh '''
+                        echo "JENKINS_HOME is:"
+
+                        echo "$JENKINS_HOME"
+                    '''
+                } catch(initErr1) {
+                    sh "Initialise Error: ${initErr1}"
+                }
+            }
+        }
+
+        timeout(time:10, unit:'MINUTES') {
+            stage('Build and Test') {
+                withMaven(
+                    maven:"Maven 3.6.1"
+                ) {
+                    sh """
+                        mvn clean jacoco:prepare-agent verify
+                    """
+                }
+            }
+        }
+
+        currentBuild.result = 'SUCCESS';
+    } catch (err) {
+        currentBuild.result = 'FAILED';
+    } finally {
+    }
+}

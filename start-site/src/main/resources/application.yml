@@ -22,6 +22,14 @@ spring:
       thread-name-prefix: initializr-
 
 initializr:
+  group-id:
+    value: co.industrie.client-name.project-name
+  artifact-id:
+    value: artifact-name
+  name:
+    value: Demo
+  description:
+    value: Demo Indstrie project for Spring Boot
   env:
     boms:
       azure:
@@ -152,6 +160,30 @@ initializr:
         url: https://oss.sonatype.org/content/repositories/snapshots/
         snapshotsEnabled: true
   dependencies:
+    - name: Industrie
+      content:
+        - name: Jacoco Maven Plugin
+          id: Jacoco
+          groupId: org.jacoco
+          artifactId: jacoco-maven-plugin
+          version: 0.8.5
+          scope: runtime
+          description: The JaCoCo Maven Plugin provides the JaCoCo runtime agent to your tests and allows basic report creatio
+          starter: false
+          links:
+            - rel: reference
+              href: https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin
+        - name: Dependency Check Maven Plugin
+          id: dependency-check
+          groupId: org.owasp
+          artifactId: dependency-check-maven
+          version: 5.2.4
+          scope: runtime
+          description: dependency-check-maven is a Maven Plugin that uses dependency-check-core to detect publicly disclosed vulnerabilities associated with the project's dependencies. The plugin will generate a report listing the dependency, any identified Common Platform Enumeration (CPE) identifiers, and the associated Common Vulnerability and Exposure (CVE) entries.
+          starter: false
+          links:
+            - rel: reference
+              href: https://mvnrepository.com/artifact/org.owasp/dependency-check-maven/5.2.4
     - name: Developer Tools
       content:
         - name: Spring Boot DevTools
@@ -1245,34 +1277,34 @@ initializr:
         format: build
       default: false
       action: /pom.xml
-    - name: Gradle Project
-      id: gradle-project
-      description: Generate a Gradle based project archive.
-      tags:
-        build: gradle
-        format: project
-      default: false
-      action: /starter.zip
-    - name: Gradle Config
-      id: gradle-build
-      description: Generate a Gradle build file.
-      tags:
-        build: gradle
-        format: build
-      default: false
-      action: /build.gradle
+#    - name: Gradle Project
+#      id: gradle-project
+#      description: Generate a Gradle based project archive.
+#      tags:
+#        build: gradle
+#        format: project
+#      default: false
+#      action: /starter.zip
+#    - name: Gradle Config
+#      id: gradle-build
+#      description: Generate a Gradle build file.
+#      tags:
+#        build: gradle
+#        format: build
+#      default: false
+#      action: /build.gradle
   packagings:
     - name: Jar
       id: jar
       default: true
-    - name: War
-      id: war
-      default: false
+#    - name: War
+#      id: war
+#      default: false
   javaVersions:
-    - id: 13
-      default: false
-    - id: 11
-      default: false
+#    - id: 13
+#      default: false
+#    - id: 11
+#      default: false
     - id: 1.8
       name: 8
       default: true
@@ -1280,12 +1312,12 @@ initializr:
     - name: Java
       id: java
       default: true
-    - name: Kotlin
-      id: kotlin
-      default: false
-    - name: Groovy
-      id: groovy
-      default: false
+#    - name: Kotlin
+#      id: kotlin
+#      default: false
+#    - name: Groovy
+#      id: groovy
+#      default: false
   bootVersions:
     - name : Latest SNAPSHOT
       id: 2.2.0.BUILD-SNAPSHOT

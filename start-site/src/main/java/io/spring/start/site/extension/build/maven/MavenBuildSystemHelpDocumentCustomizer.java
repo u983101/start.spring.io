@@ -42,6 +42,19 @@ class MavenBuildSystemHelpDocumentCustomizer implements HelpDocumentCustomizer {
 		document.gettingStarted().addReferenceDocLink(
 				String.format("https://docs.spring.io/spring-boot/docs/%s/maven-plugin/", this.springBootVersion),
 				"Spring Boot Maven Plugin Reference Guide");
+		document.gettingStarted().addGuideLink(
+				"https://42.industrieit.com/display/~johnny.tam/Industrie+Spring+Initializr",
+				"Industrie Spring Initializr");
+		document.gettingStarted().addGuideLink("https://42.industrieit.com/display/~johnny.tam/CI+Lifecycle",
+				"CI Lifecycle");
+		document.gettingStarted().addGuideLink("https://42.industrieit.com/display/~johnny.tam/Unit+tests+coverage",
+				"Unit test coverage");
+
+		document.gettingStarted().addAdditionalLink(
+				"https://42.industrieit.com/display/~johnny.tam/OWASP+Dependency+Check", "OWASP Dependency Check");
+		document.gettingStarted().addAdditionalLink(
+				"https://42.industrieit.com/display/~johnny.tam/Editor+Configuration", "Editor Configuration");
+
 	}
 
 }

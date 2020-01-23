@@ -9,4 +9,9 @@ io.spring.start.site.extension.dependency.springdata.SpringDataProjectGeneration
 io.spring.start.site.extension.dependency.springintegration.SpringIntegrationProjectGenerationConfiguration,\
 io.spring.start.site.extension.dependency.springrestdocs.SpringRestDocsProjectGenerationConfiguration,\
 io.spring.start.site.extension.description.DescriptionProjectGenerationConfiguration,\
-io.spring.start.site.extension.code.kotin.KotlinProjectGenerationConfiguration
+io.spring.start.site.extension.code.kotin.KotlinProjectGenerationConfiguration,\
+io.spring.start.site.contributor.JenkinsfileContributor,\
+io.spring.start.site.contributor.DependencySuppressionContributor,\
+io.spring.start.site.contributor.EditorConfigContributor,\
+io.spring.start.site.build.DependencyCheckCustomizer,\
+io.spring.start.site.build.JacocoCustomizer
